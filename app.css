@@ -1,0 +1,16 @@
+header, footer {
+    background-color: black;
+    color: #ddd;
+    padding: 10px;
+    text-align: center;
+}
+aside {
+    padding-top: 10px;
+    font-weight: bold;
+}
+.title {
+    color: black;
+}
+#orderedlist {
+    color: black; 
+}
