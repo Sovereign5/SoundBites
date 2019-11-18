@@ -5,12 +5,33 @@ header, footer {
     text-align: center;
 }
 aside {
-    padding-top: 10px;
+    padding-top: 20px;
     font-weight: bold;
 }
-.title {
+.footerprojectinformation {
     color: black;
 }
-#orderedlist {
-    color: black; 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: Black;
+}
+li {
+    float: center;
+    border-style: solid; color: white;
+}
+li:last-child {
+    border-right: none;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
 }
