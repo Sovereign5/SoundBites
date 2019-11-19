@@ -1,30 +1,37 @@
-header, footer {
+header {
     background-color: black;
     color: #ddd;
     padding: 10px;
     text-align: center;
+}
+footer {
+    background-color: black;
+    color: #ddd;
+    padding: 10px;
+    text-align: center;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
 }
 aside {
     padding-top: 20px;
     font-weight: bold;
 }
 .footerprojectinformation {
-    color: black;
+    color:black;
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: Black;
+    background-color: black;
 }
 li {
     float: center;
     border-style: solid; color: white;
 }
-li:last-child {
-    border-right: none;
-}
+
 li a {
     display: block;
     color: white;
@@ -33,5 +40,5 @@ li a {
     text-decoration: none;
 }
 li a:hover {
-    background-color: #111;
+    background-color: #ddd;
 }
