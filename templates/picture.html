@@ -1,0 +1,27 @@
+<!--
+Author: Christopher Garcia
+Date: 11/7/2019
+Course Name: CST205
+Description: A dynamic page that depends on whatever image it came from. Shows image-specific information, as well as the image at full resolution.
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>About Flask</title>
+  </head>
+  <body>
+    {% extends "home.html" %}
+    {% block content %}
+
+    <h1> About "{{a_picture}}" by {{author}} </h1>
+    <img src="{{ user_image }}" alt="User Image">
+    <br>
+
+    <p>RGB image in PNG format with width {{width}} and height {{height}}</p>
+    <li><a href="{{ url_for('home') }}">Back to the list of images</a></li>
+    
+    {% endblock %}
+  </body>
+</html>
