@@ -1,0 +1,67 @@
+<!--
+Author: Christopher Garcia
+Date: 11/7/2019
+Course Name: CST205
+Description: The home page. Shows the three random images provided by the hw file, and links to follow them.
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SoundBites!</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <h2>Option selector</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <!-- <form action = "" method="POST">
+        <select name = 'option'>
+          {% for option in option_list %}
+            <option value="{{ option }}" selected='selected'>{{ option }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Submit" \>
+        <div id="place_for_suggestions"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      </form> -->
+      <select name = 'option' id='sounds'>
+        {% for option in option_list %}
+          <option value="{{ option }}" selected = 'selected'>{{ option }}</option>
+          {% endfor %}
+      </select>
+      <button id="submit">CLICK</button>
+
+      <script>
+        $('#submit').click(function()
+        {
+          var submitValue = $('#sounds').val();
+          console.log("submitValue =", submitValue);
+          $.ajax ({
+            url: '/submit_data',
+            type: 'POST',
+            //contentType: 'application/json;charset=UTF=8',
+            data: {
+              submitValue
+            },
+            success: function(response) {
+              console.log(response);
+              $('#userResponse').html(response);
+              $('#error').html('SUCCESS!');
+              $('#sounds').val();
+            },
+            error: function(xhr, status, error) {
+              $('#error').html('ERROR!')
+              console.log(xhr);
+              var err = JSON(xhr.responseText);
+              alert(err.Message);
+            }
+          });
+        });
+      </script>
+      <div id="userResponse"></div>
+      <div id="error"></div>
+    {% endblock %}
+  </body>
+</html>
