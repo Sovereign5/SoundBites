@@ -1,0 +1,81 @@
+<!--
+Author: Christopher Garcia
+Date: 12/15/2019
+Course Name: CST205
+Description: The home page. Contains JS/AJAX code for updating the page
+without reloading it. Contains a dropdown, add button, download link, and
+refresh page all within reach for the user. 
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sound Bites Apple</title>
+  </head>
+  <body>
+    <!-- Extend the header, blocks off the content that's to come-->
+    {% extends "template.html" %}
+    {% block content %}
+    <h2>Option selector</h2>
+    <!--Imports AJAX so we can use it for sending the user's request back to the Python code-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--A list of all possible sound bites the user can choose from-->
+      <select name = 'option' id='sounds'>
+        {% for option in option_list %}
+          <option value="{{ option }}" selected = 'selected'>{{ option }}</option>
+          {% endfor %}
+      </select>
+
+      <!-- Download button -->
+      <button id="submit">ADD</button>
+      <a href="/static/song.mp3" download="song.mp3">
+      <p>DOWNLOAD!</p>
+      </a>
+      <br>
+      <br>
+
+      <!-- Refresh button, just in case-->
+      <button id="refresh">Refresh Page (WARNING: Clears notes!)</button>
+      <script>
+      $('#refresh').click(function()
+      {
+        location.reload(true);
+      });
+      </script>
+      
+      <!-- JavaScript code: Sends the option selected by the user BACK to the python code so the .wav file can be created.
+      this is all so the webpage isn't updated upon user selection-->
+      <script>
+        $('#submit').click(function()
+        {
+          var submitValue = $('#sounds').val();
+          console.log("submitValue =", submitValue);
+          $.ajax ({
+            url: '/submit_data',
+            type: 'POST',
+            //contentType: 'application/json;charset=UTF=8',
+            data: {
+              submitValue
+            },
+            success: function(response) {
+              console.log(response);
+              $('#userResponse').html(response);
+              $('#error').html('SUCCESS!');
+              $('#sounds').val();
+            },
+            error: function(xhr, status, error) {
+              $('#error').html('ERROR!')
+              console.log(xhr);
+              var err = JSON(xhr.responseText);
+              alert(err.Message);
+            }
+          });
+        });
+      </script>
+
+      <div id="userResponse"></div>
+
+    {% endblock %}
+  </body>
+</html>
