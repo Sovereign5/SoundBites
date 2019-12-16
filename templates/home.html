@@ -1,0 +1,40 @@
+<!--
+Author: Christopher Garcia
+Date: 11/7/2019
+Course Name: CST205
+Description: The home page. Shows the three random images provided by the hw file, and links to follow them.
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SoundBites!</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <h2>Option selector</h2>
+      <!-- <h3><table><form action="" method="POST">
+        <td>
+          <label>Select: </label>
+            <select name="option" width="300px">
+              {% for x in option_list %}
+                <option value="{{ x }}"{% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" value="Submit" />
+        </td>
+        </form></table></h3> -->
+      <form action = "" method="POST">
+        <select name = 'option'>
+          {% for option in option_list %}
+            <option value="{{ option }}" selected='selected'>{{ option }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Submit" \>
+      </form>
+      <h4>This is what you got: {{ option }}</h4>
+    {% endblock %}
+  </body>
+</html>
