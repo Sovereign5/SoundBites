@@ -1,5 +1,5 @@
 /* Author: Christopher Garcia
-Date: 11/7/2019
+Date: 12/15/2019
 Course Name: CST205
 Description: This CSS file allows for more advanced customization of the GUI */
 
@@ -13,7 +13,7 @@ body {
     * Formatting the header area
     */
     header {
-    background-color: rgb(47, 202, 55);
+    background-color: dodgerblue;
     height: 35px;
     width: 100%;
     opacity: .9;
